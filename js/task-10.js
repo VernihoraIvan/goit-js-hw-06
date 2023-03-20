@@ -4,7 +4,7 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
-const divCollection = [];
+let divCollection = [];
 const boxesNumber = divCollection.length;
 const inputNumber = document.querySelector("input");
 
@@ -17,7 +17,7 @@ const createBoxes = (event) => {
   const inputNumberValue = Number(inputNumber.value);
   let width = 30;
   let height = 30;
-  for (let i = 0; i <= inputNumberValue; i += 1) {
+  for (let i = 0; i < inputNumberValue; i += 1) {
     const divItem = document.createElement("div");
     console.log(divItem);
     divItem.style.width = `${width}px`;
@@ -33,10 +33,11 @@ btnCreate.addEventListener("click", () => {
   inputNumber.value = "";
 
   boxes.append(...divCollection);
-  divCollection = [];
+  console.log(boxes);
 });
 
 inputNumber.addEventListener("blur", createBoxes);
 btnDestroy.addEventListener("click", function destroyBoxes() {
+  divCollection = [];
   boxes.innerHTML = "";
 });
